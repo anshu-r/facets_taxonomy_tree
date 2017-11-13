@@ -66,7 +66,8 @@ class ShowFullTaxonomyTree extends ProcessorPluginBase implements BuildProcessor
    */
   public function build(FacetInterface $facet, array $results) {
     $config = $this->getConfiguration();
-    if (!empty($config['vocabulary'])) {
+
+    if (!empty($config['vocabulary']) && !empty($results)) {
       if ($vocab = $this->entityTypeManager->getStorage('taxonomy_vocabulary')->load($config['vocabulary'])) {
         if ($terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadTree($vocab->id())) {
           foreach ($terms as $term) {
