@@ -79,7 +79,7 @@ class ShowFullTaxonomyTree extends ProcessorPluginBase implements BuildProcessor
               }
             }
             if (!$term_exists) {
-              $new_result = new Result($term->tid, $term->tid, 0);
+              $new_result = new Result($facet, $term->tid, $term->tid, 0);
               if ($facet->isActiveValue($term->tid)) {
                 $new_result->setActiveState(TRUE);
               }
